@@ -1,0 +1,13 @@
+/* Add your existing CSS styles here */
+
+/* Additional styling for the search bar */
+.input-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Adjustments for the heading */
+  .col-md-8 h5 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 10px;
+  }

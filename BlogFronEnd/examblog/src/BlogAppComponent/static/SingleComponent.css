@@ -1,0 +1,61 @@
+/* singleComponent.css */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+#titleImg{
+    display: block;
+    width: 100%;
+    height: 50%;
+}
+
+.titleblog {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    margin-left: 22%;
+    /* background-color: rgb(126, 94, 172); */
+    /* margin-left: 10%; */
+}
+.buttonDiv button {
+    margin-right: 1vw;
+}
+
+p {
+    margin-left: 1vw;
+}
+
+.col3 p {
+    margin-left: 1vw;
+}
+.subTitleDiv{
+    padding-left: 23%;
+}
+
+@media (max-width: 768px) {
+    .titleblog {
+        font-size: 1.5em;
+        margin-left: 2vw;
+    }
+
+    .buttonDiv {
+        padding-top: 1vw;
+        margin-left: 2vw;
+    }
+
+    .buttonDiv button {
+        margin-right: 0.5vw;
+    }
+
+    p {
+        margin-left: 1vw;
+    }
+
+    .col3 h6,
+    .col3 p {
+        margin-left: 2vw;
+    }
+}

@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+
+.title {
+    font-family: 'PT Serif Caption', serif;
+    padding-left: 15px;
+
+}
+
+.paragraphContent {
+    font-family: 'Crimson Text', serif;
+}
+
+.jumbotronDiv {
+    margin-top: 10px;
+}
+
+#title {
+    font-family: 'PT Serif Caption', serif;
+}
+
+.col1, .col2 {
+    margin-bottom: 20px; /* Adjusted margin for better responsiveness */
+}
+
+
+@media (max-width: 576px) {
+    /* Adjust styles for extra small screens */
+    .cardBlog {
+       margin-left: 0; /* Remove left margin for smaller screens */
+    }
+    .col3 {
+        width: auto; /* Allow the container to take full width on smaller screens */
+      }
+      #carouselExampleDark img {
+        max-height: 200px; /* Adjust the maximum height as needed */
+        width: auto; /* Ensure images maintain their aspect ratio */
+      }
+      .title {
+        font-size: 1rem;
+    }
+ }
+ 
+ @media (min-width: 992px) {
+    /* Additional styles for larger screens */
+    .jumbotronDiv {
+       margin-top: 50px; /* Adjusted margin for larger screens */
+    }
+ }
+ @media (max-width: 768px) {
+    /* Adjust styles for screens smaller than 768px */
+    .title {
+        font-size: 1rem;
+    }
+}

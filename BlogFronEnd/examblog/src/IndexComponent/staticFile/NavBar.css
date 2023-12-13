@@ -1,0 +1,42 @@
+/* NavBar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+.nav-head {
+  background-color: #164863;
+}
+
+.nav-link {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+}
+
+.Container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.logo {
+  margin-left: 50px;
+}
+
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 14px; /* Adjust the font size for smaller screens */
+  }
+
+  .navbar-toggler {
+    margin-right: 15px; /* Adjust the margin to give some space between the button and the logo */
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-link {
+     font-size: 12px; /* Adjust the font size for extra small screens */
+  }
+  
+  .logo {
+    margin-left: 0;
+  }
+}

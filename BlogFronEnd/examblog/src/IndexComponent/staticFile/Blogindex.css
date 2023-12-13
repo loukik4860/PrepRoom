@@ -1,0 +1,40 @@
+body {
+  background-color: #adabab20;
+  margin: 0;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.navbar-brand {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+header a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+header a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.nav-icons {
+  color: white;
+  top: 0;
+  right: 0;
+}
+
+.nav-icons span {
+  margin-right: 20px;
+}
+
+section {
+  min-height: 900px; /* Adjust the height of the section */
+}
+
+/* Add more styles for your footer if needed */

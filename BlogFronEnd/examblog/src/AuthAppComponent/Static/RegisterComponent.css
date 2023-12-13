@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+.formgroup{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2%;
+
+}
+.heading{
+    font-family: 'Oswald', sans-serif;
+    margin-left: 35%;
+    margin-top: 1%;
+}
+dt{
+    font-family: 'Roboto', sans-serif;
+}
