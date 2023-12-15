@@ -46,8 +46,8 @@ class AuthorLoginView(APIView):
             user = authenticate(Author_email=Author_email, password=password)
             print(user)
             if user is not None:
-                # token = get_tokens_for_user(user)
-                return Response({'msg': "Login Successful"}, status=status.HTTP_200_OK)
+                token = get_tokens_for_user(user)
+                return Response({'token':token,'msg': "Login Successful"}, status=status.HTTP_200_OK)
             else:
                 return Response({'errors': {'non_fields_errors': ['Email or password is not valid']}},
                                 status=status.HTTP_404_NOT_FOUND)

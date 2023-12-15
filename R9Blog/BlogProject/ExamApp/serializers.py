@@ -4,6 +4,8 @@ from .models import ExamSectionModel, CommissionModel, ExamModel, NotificationMo
 from blogApp.serializers import TagSerializer
 
 
+# from rest_framework.validators import
+
 class ExamSectionSerializer(serializers.ModelSerializer):  # Done
     class Meta:
         model = ExamSectionModel
@@ -11,6 +13,20 @@ class ExamSectionSerializer(serializers.ModelSerializer):  # Done
 
     def create(self, validated_data):
         return ExamSectionModel.objects.create(**validated_data)
+
+    def validate(self, data):
+        name = data.get('name', '')
+        print(name)
+        abbreviation = data.get('abbreviation', '')
+        print(abbreviation)
+        if len(name) < 3 and len(abbreviation) < 3:
+            raise serializers.ValidationError("Name and Abbrevation must be atleast 3 character long")
+        return data
+
+    def validate_name(self, value):
+        if len(value) < 3:
+            raise serializers.ValidationError("Name must be at least 3 character long")
+        return value
 
 
 class CommissionSerializer(serializers.ModelSerializer):  # Done
@@ -22,6 +38,16 @@ class CommissionSerializer(serializers.ModelSerializer):  # Done
 
     def create(self, validated_data):
         return CommissionModel.objects.create(**validated_data)
+
+    def validate_name(self, value):
+        if len(value) < 0:
+            raise serializers.ValidationError("Description must not be blank ")
+        return value
+
+    def validate_description(self, value):
+        if len(value) < 0:
+            raise serializers.ValidationError("Name must not be blank ")
+        return value
 
 
 class ExamSerializer(serializers.ModelSerializer):

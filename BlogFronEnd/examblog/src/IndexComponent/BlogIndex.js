@@ -5,8 +5,6 @@ import { SectionComponent } from "./SectionComponent";
 import { SubNavbar } from "./SubNavBar";
 import { FooterComp } from "./Footer";
 
-
-
 export function BlogIndex(){
     return(
         <div className="container-fluid">

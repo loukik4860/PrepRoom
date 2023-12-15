@@ -8,7 +8,7 @@ export function AddExam(){
     const [commissionList,setCommissionList] = useState([]);
     const editor = useRef(null);
     const navigate = useNavigate();
-
+    const [server_error,setServer_error] = useState({});
     const formik = useFormik({
         initialValues : {
             name : "",
@@ -20,7 +20,7 @@ export function AddExam(){
             alert(JSON.stringify(values));
             axios({
                 method : "POST",
-                url : "http://127.0.0.1:8000/ExamApp/examCreate/",
+                url :   "http://127.0.0.1:8000/ExamApp/examCreate/",
                 data : values,
             })
             .then(()=>{
@@ -29,6 +29,8 @@ export function AddExam(){
             })
             .catch((error)=>{
                 console.error("Error:-",error)
+                console.log("Error",error.response.data);
+                setServer_error(error.response.data);
             });       
         },
     });
@@ -38,7 +40,7 @@ export function AddExam(){
         .then((response)=>response.json())
         .then((data)=>{
             setCommissionList(data)
-            console.log("commission List:-",data);
+            // console.log("commission List:-",data);
         })
     },[]);
     
@@ -48,12 +50,14 @@ export function AddExam(){
     
     return(
         <div className="container bg-light shadow my-3">
+            {server_error && server_error.name ? console.log(server_error.name):"" }
             <div className="jumbotron jumbotron-fluid py-3 px-3">
                 <h4>ADD EXAM</h4>
                 <form noValidate onSubmit={formik.handleSubmit} className="" >
                     <dl>
                         <dt className="mt-3 mb-1" >Name</dt>
                         <dd><input type="text" className="form-control" name="name"value={formik.values.name} onChange={formik.handleChange}/></dd>
+                        {server_error && server_error.name ? <span><small className="text-danger">{server_error.name}</small></span>:"" }
                         <dt className="mt-3 mb-1" >Abbreviation</dt>
                         <dd><input type="text" className="form-control" name="abbreviation" value={formik.values.abbreviation} onChange={formik.handleChange} /></dd>
                         <dt className="mt-3 mb-1" >Description</dt>

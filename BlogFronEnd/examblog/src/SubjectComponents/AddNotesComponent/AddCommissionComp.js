@@ -9,6 +9,7 @@ export function AddCommission() {
   const [examSection, setExamSection] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const [server_error,setServer_error] = useState({});
 
   const formik = useFormik({
     initialValues: {
@@ -17,9 +18,6 @@ export function AddCommission() {
       examSection: "",
     },
     onSubmit: (values,{resetForm}) => {
-      // You can use formik.values.description directly instead of maintaining a separate state
-      alert(JSON.stringify(values));
-
       axios({
         method: "POST",
         url: "http://127.0.0.1:8000/ExamApp/commissionCreate/",
@@ -27,14 +25,12 @@ export function AddCommission() {
         })
         .then(() => {
           alert("Commission Added");
-          navigate('/addExam');
-          resetForm()
+          resetForm();
         })
         .catch((error) => {
-          console.error("Error:", error);
-          // Handle error as needed
-          resetForm();
+          setServer_error(error.response.data)
         });
+        navigate('/addExam');
     },
   });
   const nameFromState = location.state?.name;
@@ -44,7 +40,10 @@ export function AddCommission() {
       .then((data) => {
         setExamSection(data);
         console.log(data);
-      });
+      })
+      .catch((error)=>{
+        console.error("Error fetching exam Section",error);
+      })
   }, []);
 
   const handleEditorChange = (newContent) => {
@@ -56,12 +55,12 @@ return (
       <div className="jumbotron jumbotron-fluid py-3 px-3">
         <h4>Add Commission</h4>
         <h4>{nameFromState}</h4>
-
         <form noValidate onSubmit={formik.handleSubmit}>
           <dl>
             <dt>Commission Name</dt>
             <dd>
               <input type="text" required className="form-control" name="name" onChange={formik.handleChange} value={formik.values.name}/>
+              {server_error && server_error.name? <span><small className="text-danger">{server_error.name}</small></span>:""}
             </dd>
             <dt>Description</dt>
             <dd>

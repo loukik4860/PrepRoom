@@ -1,19 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../IndexComponent/staticFile/NavBar.css";
+import { getToken, removeToken } from "../AuthAppComponent/Services/LocalStorage";
 
 export function NavbarIndex() {
+  const navigate = useNavigate();
   const closeNavbar = () => {
     const navbarToggler = document.querySelector('.navbar-toggler');
     if (navbarToggler && window.innerWidth < 992) {
        navbarToggler.click();
     }
  };
+
+ const handleLogOut=()=>(
+  removeToken(),
+  navigate('/Authentication')
+ )
+ const {access_token} = getToken()
   return (
     <div className="navBar">
       <header className="Header nav-head navbar navbar-expand-lg navbar-dark">
-        <div className="Container container-fluid">
-          <div className="logo navbar-brand">InsightfulMPSC</div>
-          <button
+         <div className="Container container-fluid">
+           <div className="logo navbar-brand">InsightfulMPSC</div>
+           <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -44,10 +52,14 @@ export function NavbarIndex() {
               </span>
               {/* <span className="nav-link"><Link to="/login">Login</Link></span> */}
             </div>
-
             <div className="nav-icons d-flex align-items-center">
-              <span className="bi bi-search me-3"></span>
-              <span className="bi bi-person"></span>
+              <span className="bi bi-search me-3" ></span>
+             
+              {
+                access_token ?  <button class="bi bi-door-closed-fill btn btn-primary" onClick={handleLogOut}></button> :
+                                <span className="bi bi-person"></span> 
+              }
+             
             </div>
           </div>
         </div>
