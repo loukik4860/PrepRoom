@@ -152,7 +152,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    # "DEFAULT_RENDERER_CLASSES": ('rest_framework.renderers.JSONRenderer',)
+    # "DEFAULT_RENDERER_CLASSES": ('rest_framework.renderers.JSONRenderer',),
     'DEFAULT_THROTTLE_RATES' : {
         'anon': '10/day',
         'user': '5/hour'

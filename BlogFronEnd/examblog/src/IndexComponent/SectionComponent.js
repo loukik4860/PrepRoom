@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { HomeComponent } from "../BlogAppComponent/HomeComponent";
 import { LoginComponent } from "../AuthAppComponent/LoginComponent";
 import { RegisterComponent } from "../AuthAppComponent/RegisterComponent";
@@ -37,8 +37,10 @@ import { CreateBlog } from "../BlogAppComponent/CreateBlogComp";
 import { AdminPage } from "../ExamComponent/AdminPage";
 import { FileNotFound } from "../BlogAppComponent/FileNotFound";
 import { NotificationComponent } from "../ExamComponent/NotificationComponent";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
 export function SectionComponent(){
+    const { access_token } = useSelector(state=>state.auth)
     return(
         <div>
             <Routes>
@@ -55,9 +57,9 @@ export function SectionComponent(){
                 <Route path="/AdminPage" element={<AdminPage/>}/>
                 <Route path="/notification" element={<NotificationComponent/>}/>
                 {/* -------------------------------------------- */}
-                <Route path="/login" element={<LoginComponent/>}/>
+                <Route path="/login" element={!access_token ? <LoginComponent/>: <AdminPage/>}/>
                 <Route path="/registerAuthor" element={<RegisterComponent/>}/>
-                <Route path="/Authentication" element={<AuthenticationComponent/>}/>
+                <Route path="/Authentication" element={ !access_token ? <AuthenticationComponent/> : <AdminPage/> }/>
                 <Route path="/authorComponent" element={<ProfileComponent/>}/>
                 <Route path="/changePassword" element={<ChangePasswordComponent/>}/>
                 <Route path="/resetEmail" element={<ResetEmailComponent/>}/>

@@ -6,7 +6,7 @@ from .models import AuthorUser
 # Register your custom user model with the admin site
 class AuthorUserAdmin(UserAdmin):
     list_display = (
-        'id','Author_firstName', 'Author_lastName', 'Author_email', 'is_author', 'is_active', 'is_admin', 'created_at',
+        'id', 'Author_firstName', 'Author_lastName', 'Author_email', 'is_author', 'is_active', 'is_admin', 'created_at',
         'updated_at')
     list_filter = ('is_admin', 'is_author', 'is_active')
     fieldsets = (

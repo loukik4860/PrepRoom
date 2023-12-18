@@ -1,13 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import '../AuthAppComponent/Static/RegisterComponent.css';
 import { useRegisterUserMutation } from './Services/UserAuthApi';
-import { useState } from 'react';
-import { storeToken } from './Services/LocalStorage';
+import { useEffect, useState } from 'react';
+import { getToken,storeToken } from './Services/LocalStorage';
+import { useDispatch } from "react-redux";
+import { setUserToken } from "./feature/authSlice";
 
 export function RegisterComponent() {
   const [server_error, setServer_error] = useState({});
   const navigate = useNavigate();
   const [registerUser, { isLoading }] = useRegisterUserMutation();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,10 +31,17 @@ export function RegisterComponent() {
     if(res.data){
       console.log("res.data",res.data.token);
       storeToken(res.data.token);
+      let { access_token } = getToken();
+      dispatch(setUserToken({access_token : access_token}))
       navigate('/home');
     }
   };
 
+  let {access_token} = getToken()
+  useEffect(()=>{
+      dispatch(setUserToken({access_token : access_token}))
+  },[dispatch])
+ 
   return (
     <div className="container-fluid">
       <div className="row mx-4">

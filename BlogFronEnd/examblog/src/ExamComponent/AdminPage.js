@@ -15,7 +15,7 @@ export function AdminPage() {
             </div>
           </div>
         </div>
-        <div className="container-fluid text-center mb-3" style={{ height: "6rem" }}>
+        <div className="container-sm text-center mb-3" style={{ height: "6rem " }}>
           <div className="row ">
             <div className="col-sm mx-3 bg-success-subtle shadow rounded-2 Mdiv" style={{ height: "6rem" }}>
               <div className="my-1">

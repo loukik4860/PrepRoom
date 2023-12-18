@@ -3,6 +3,8 @@ import pic1 from "../Images/1.png";
 import "../AuthAppComponent/Static/AuthenticationComponent.css";
 import { RegisterComponent } from '../AuthAppComponent/RegisterComponent';
 import { LoginComponent } from "./LoginComponent";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const TabPanel = (props) => {
   const { children, value, index } = props;
@@ -15,7 +17,9 @@ const TabPanel = (props) => {
 
 export function AuthenticationComponent() {
   const [value, setValue] = useState(0);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

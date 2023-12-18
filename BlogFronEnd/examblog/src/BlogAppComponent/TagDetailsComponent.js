@@ -46,7 +46,7 @@ export function TagDetailsComponent() {
               <h4 className="tagName ms-3">{tags.name}</h4>
                 <div className="container">
                   {
-                    tags.tag.map(blog => (
+                    tags.tag && tags.tag.map(blog => (
                     <div className="card shadow p-3 mb-1 mt-3 bg-body-tertiary bg-white rounded shadow" key={blog.id}>
                       <Link className="link-dark link-underline-light link-offset-2 link-underline-opacity-100-hover" to={'/singleblog/'+blog.id}>
                         <h5 className="blogTitle ms-3">{blog.title}</h5>
@@ -55,7 +55,7 @@ export function TagDetailsComponent() {
                       <p className="mb-4">{extractFirst50Words(blog.content)}</p>
                       <div className="d-flex ms-2">
                         {
-                          blog.Tag.map((Tags=>(
+                          blog.Tag && blog.Tag.map((Tags=>(
                             <Link key={Tags.id} to={`/tagDetails/${Tags.id}`} target="_blank" rel="noopener noreferrer">
                               <button className="btn btn-danger btn-sm ms-2">{Tags.name}</button>
                             </Link>

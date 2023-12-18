@@ -646,7 +646,3 @@ export function HomeComponent(){
         </div>
     )
 }
-
-//  notificationList.slice().reverse().slice(0,10).map((list) => (
-//                                                 <li key={list.id} className="list-group-item ">{list.name}</li>
-//                                             ))

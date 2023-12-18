@@ -7,7 +7,7 @@
   background-color: #164863;
 }
 
-.nav-link {
+.nav-item {
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
 }
@@ -19,6 +19,15 @@
 
 .logo {
   margin-left: 50px;
+}
+.custom-navbar{
+  background-color: #412360;
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+.navbar-brand{
+  color: white;
 }
 
 @media (max-width: 768px) {

@@ -47,7 +47,7 @@ class AuthorLoginView(APIView):
             print(user)
             if user is not None:
                 token = get_tokens_for_user(user)
-                return Response({'token':token,'msg': "Login Successful"}, status=status.HTTP_200_OK)
+                return Response({'token': token, 'msg': "Login Successful"}, status=status.HTTP_200_OK)
             else:
                 return Response({'errors': {'non_fields_errors': ['Email or password is not valid']}},
                                 status=status.HTTP_404_NOT_FOUND)
@@ -90,3 +90,8 @@ class AuthorPasswordReset(APIView):
         if serializer.is_valid(raise_exception=True):
             return Response({'msg': 'Password Reset Successfully'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ------------------------------------------------------------------------------------------------------------------------#
+
+
