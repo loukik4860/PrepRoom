@@ -17,9 +17,7 @@ const TabPanel = (props) => {
 
 export function AuthenticationComponent() {
   const [value, setValue] = useState(0);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

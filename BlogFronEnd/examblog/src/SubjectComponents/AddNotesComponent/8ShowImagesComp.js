@@ -26,7 +26,7 @@ export function AddImageComp() {
           <div className="card mb-3" style={{ maxWidth: "75rem"}} key={image.id}>
             <div className="row g-1">
               <div className="col-md-4">
-                <img src={image.image} className="img-fluid rounded-start"  alt={`Image ${image.id}`} style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
+                <img src={image.image} className="img-fluid rounded-start"  alt={`${image.id}`} style={{ width: "100%", height: "100%", objectFit: "cover" }}/>
               </div>
               <div className="col-md-8">
                 <div className="card-body">

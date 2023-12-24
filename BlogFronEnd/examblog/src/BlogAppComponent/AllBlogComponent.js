@@ -16,7 +16,7 @@ export function AllBlogComponent() {
                 console.log(data);
             });
     }, []);
-
+    
     const extractFirst50Words = (content) => {
         const words = content.split(" ");
         if (words.length <= 50) {
@@ -33,7 +33,7 @@ export function AllBlogComponent() {
                 </span>
             </div>
             <div className="container container-fluid bg-light mt-2 pt-2">
-                {blogContent.map((blog, index) => (
+                {blogContent && blogContent.map((blog, index) => (
                     <div className="card shadow p-2 my-1 mx-3 rounded border-2" key={index}>
                         <div className="row">
                             <div className="col-md-3">

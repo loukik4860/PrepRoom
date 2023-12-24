@@ -11,6 +11,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from django_filters.rest_framework import DjangoFilterBackend
 from .renderer import UserRenderer
+from .Paginations import MyPageNumberPagination
 
 class PostBlogImageView(ListCreateAPIView):
     queryset = BlogImage.objects.all()
@@ -29,6 +30,7 @@ class PostBlogImageDetailsView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
     renderer_classes = [UserRenderer]
+
 
 class PostTagView(ListCreateAPIView):
     queryset = Tag.objects.all()
@@ -57,6 +59,7 @@ class PostBlogView(ListCreateAPIView):
     renderer_classes = [UserRenderer]
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
+    # pagination_class = MyPageNumberPagination
     filterset_fields = {
         'title': ['icontains'],
         'content': ['icontains'],

@@ -1,27 +1,25 @@
-/* NavBar.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-.nav-head {
-  background-color: #164863;
-}
 
-.nav-item {
+/* #877aa3 */
+
+#navbarNav {
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
 }
-
+Navbar{
+  padding-left: 100px;
+}
 .Container {
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.logo {
-  margin-left: 50px;
-}
 .custom-navbar{
-  background-color: #412360;
+  background-color:  #5f4c87;
+  padding-left: 3.7%;
+  padding-right: 2%;
 }
 .navbar-nav .nav-link {
   color: white;

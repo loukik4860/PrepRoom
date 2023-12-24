@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useFormik } from "formik"
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import JoditEditor from "jodit-react";
 
 export function AddExam(){
     const [commissionList,setCommissionList] = useState([]);
     const editor = useRef(null);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [server_error,setServer_error] = useState({});
     const formik = useFormik({
         initialValues : {

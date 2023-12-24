@@ -1,55 +1,44 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
 import "../IndexComponent/staticFile/SubNavBar.css";
 
 export function SubNavbar() {
+
   return (
-    <nav className="SubNavBar navbar navbar-expand-lg bg-danger text-light">
+    <Navbar expand="lg" bg="danger" variant="dark" className="SubNavBar">
       <div className="ms-5">
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <Link to="/ga" className="nav-link text-white">
-                General Awareness
-              </Link>
-              <Link to="/ca" className="nav-link text-white">
-                Current Affairs
-              </Link>
-              <Link to="/history" className="nav-link active text-white" aria-current="page">
-                History
-              </Link>
-              <Link to="/geography" className="nav-link text-white"> Geography
-              </Link>
-              <Link to="/polity" className="nav-link text-white">
-                Polity
-              </Link>
-              <Link to="/eco" className="nav-link text-white">
-                Economics
-              </Link>
-              <Link to="/science" className="nav-link text-white">
-                Science
-              </Link>
-              <Link to="/eng" className="nav-link text-white">
-                English
-              </Link>
-              <Link to="/eng" className="nav-link text-white">
-                  
-              </Link>
-            </div>
-          </div>
-        </div>
+        <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
+        <Navbar.Collapse id="navbarNavAltMarkup">
+          <Nav className="navbar-nav">
+            <Link id="navLink" to="/ga"  className="nav-link text-white">
+              General Awareness
+            </Link>
+            <Link id="navLink"  to="/ca" className="nav-link text-white">
+              Current Affairs
+            </Link>
+            <Link id="navLink" to="/history" className="nav-link active text-white" aria-current="page">
+              History
+            </Link>
+            <Link id="navLink" to="/geography" className="nav-link text-white">
+              Geography
+            </Link>
+            <Link id="navLink" to="/polity" className="nav-link text-white">
+              Polity
+            </Link>
+            <Link id="navLink" to="/eco" className="nav-link text-white">
+              Economics
+            </Link>
+            <Link id="navLink" to="/science" className="nav-link text-white">
+              Science
+            </Link>
+            <Link id="navLink" to="/eng" className="nav-link text-white">
+              English
+            </Link>
+            <Link id="navLink" to="/eng" className="nav-link text-white"></Link>
+           
+          </Nav>
+        </Navbar.Collapse>
       </div>
-    </nav>
+    </Navbar>
   );
 }

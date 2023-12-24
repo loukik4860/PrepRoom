@@ -12,8 +12,8 @@ export function TopicComponent(){
     .then(response=>response.json())
     .then(data=>{
       setTopicContent(data);
-      console.log(data);
-      console.log(params.id);
+      console.log("data:-",data);
+      console.log("params.id",params.id);
       if (data.length > 0) {
         handleNotesClick(data[0].id);
       };

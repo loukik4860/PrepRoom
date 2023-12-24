@@ -7,7 +7,7 @@ from .serializers import AuthorUserRegistrationSerializer, AuthorLoginSerializer
     AuthorChangePasswordSerializer, AuthorPasswordEmailResetSerializer, UserPasswordResetSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-
+from blogApp.permissions import IsAuthor
 
 def get_tokens_for_user(user):
     '''
@@ -56,7 +56,7 @@ class AuthorLoginView(APIView):
 
 class AuthorProfileView(APIView):
     renderer_classes = [UserRenderers]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsAuthor]
 
     def get(self, request, format=None):
         serializer = AuthorProfileSerializer(request.user)

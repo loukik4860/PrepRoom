@@ -35,6 +35,10 @@ export function TagDetailsComponent() {
     return words.slice(0, 50).join(" ") + "...";
   };
 
+  const sanitizeHtml = (htmlString) => {
+    const doc = new DOMParser().parseFromString(htmlString, 'text/html');
+    return doc.body.textContent || "";
+  };
   return (
     
     <div className="container mt-5">
@@ -52,7 +56,7 @@ export function TagDetailsComponent() {
                         <h5 className="blogTitle ms-3">{blog.title}</h5>
                       </Link>
                       <hr className="border border-danger border-1 opacity-25" />
-                      <p className="mb-4">{extractFirst50Words(blog.content)}</p>
+                        <p className="mb-4">{extractFirst50Words(blog.content)}</p>
                       <div className="d-flex ms-2">
                         {
                           blog.Tag && blog.Tag.map((Tags=>(
@@ -82,7 +86,7 @@ export function TagDetailsComponent() {
                         <h5 className="blogTitle ms-3">{notes.title}</h5>
                       </Link>
                         <hr className="border border-danger border-1 opacity-25" />
-                        <p className="mb-4">{extractFirst50Words(notes.content)}</p>
+                        <p className="mb-4" dangerouslySetInnerHTML={{ __html: sanitizeHtml(notes.content) }}></p>
                       <div className="d-flex ms-2">
                         {
                           notes.Tags.map(notesTags => (

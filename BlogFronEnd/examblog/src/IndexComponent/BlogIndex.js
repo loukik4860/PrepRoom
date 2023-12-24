@@ -4,18 +4,16 @@ import { NavbarIndex } from "./Navbar";
 import { SectionComponent } from "./SectionComponent";
 import { SubNavbar } from "./SubNavBar";
 import { FooterComp } from "./Footer";
-import { useSelector } from "react-redux";
 
 export function BlogIndex(){
-    const { access_token } = useSelector(state=>state.auth)
     return(
         <div className="container-fluid">
             <BrowserRouter>
-                <header>
+                <header className="fixed-top">
                     <NavbarIndex/>
                     <SubNavbar />
                 </header>
-                <section>
+                <section className="section">
                     <SectionComponent/>
                 </section>
                 <footer>

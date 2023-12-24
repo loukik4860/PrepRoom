@@ -1,14 +1,18 @@
-import { Nav, Navbar, NavDropdown,Form,Col,Button,Row } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Form, Col, Button, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../IndexComponent/staticFile/NavBar.css';
 import { getToken, removeToken } from '../AuthAppComponent/Services/LocalStorage';
+import { useDispatch } from 'react-redux';
+import { unsetUserToken } from '../AuthAppComponent/feature/authSlice';
 
 export function NavbarIndex() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogOut = () => {
+    dispatch(unsetUserToken({access_token:null}));
     removeToken();
     navigate('/Authentication');
   };
@@ -18,7 +22,7 @@ export function NavbarIndex() {
   return (
     <div className="navBar">
       <Navbar expand="lg" variant="secondary" className='custom-navbar'>
-        <Navbar.Brand href="/">InsightfulMPSC</Navbar.Brand>
+        <Navbar.Brand id='navbarNav'><Nav.Link as={Link} to="/home">StudySphere</Nav.Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarNav" />
         <Navbar.Collapse id="navbarNav">
           <Nav className="mx-auto">
@@ -31,10 +35,10 @@ export function NavbarIndex() {
             <Nav.Link as={Link} to="/allblog" onClick={() => setIsDropdownOpen(false)}>
               All Blogs
             </Nav.Link>
-            {access_token ?  <Nav.Link as={Link} to="/addSection" onClick={() => setIsDropdownOpen(false)}>
+            {access_token ? <Nav.Link as={Link} to="/addSection" onClick={() => setIsDropdownOpen(false)}>
               Add Exam Section
             </Nav.Link> : ""}
-           
+
             <NavDropdown
               title="Profile"
               id="basic-nav-dropdown"
@@ -43,30 +47,31 @@ export function NavbarIndex() {
             >
               {!access_token ? <NavDropdown.Item as={Link} to="/Authentication">
                 Authentication
-              </NavDropdown.Item>:""}
-              
-              {access_token ? <NavDropdown.Item as={Link} to="/profile">
+              </NavDropdown.Item> : ""}
+
+              {access_token ? <NavDropdown.Item as={Link} to="/authorProfile">
                 Profile
               </NavDropdown.Item> : ""}
-              {access_token ?  <NavDropdown.Item onClick={handleLogOut}>Logout</NavDropdown.Item> : ""}
-             
+              {access_token ? <NavDropdown.Item onClick={handleLogOut}>Logout</NavDropdown.Item> : ""}
+
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Form inline>
-        <Row>
-          <Col xs="auto">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              className="mr-sm-4"
-            />
-          </Col>
-          <Col xs="auto">
-            <Button type="submit"><i class="bi bi-search"></i></Button>
-          </Col>
-        </Row>
-      </Form>
+        <Form >
+          <Row className=" search-box align-items-center">
+            <Col xs="auto">
+              <Form.Control
+                type="text"
+                placeholder="Type To Search.."
+                className="mr-sm-4"
+              />
+            </Col>
+            
+            <Col xs="auto">
+              <Button type="submit"><i className="bi bi-search"></i></Button>
+            </Col>
+          </Row>
+        </Form>
       </Navbar>
     </div>
   );

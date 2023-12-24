@@ -9,10 +9,10 @@ export function AuthorDetailsComponent() {
       .then((data) => {
         setAuthorList(data);
       });
-  }, []); // Pass an empty dependency array
+  }, []); 
 
   return (
-    <div className="container">
+    <div className="container bg-light mt-3">
       <div className="heading">
         <h3>Author Details with BlogPost, Tags</h3>
       </div>

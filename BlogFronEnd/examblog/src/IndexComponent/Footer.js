@@ -9,26 +9,26 @@ export function FooterComp(){
                 <div className="container py-4">
                     <div className="row gy-4 gx-5">
                         <div className="col-lg-4 col-md-6">
-                            <h5 className="h1 text-white">FB.</h5>
-                            <p className="small text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                            <p className="small text-white mb-0">&copy; Copyrights. All rights reserved. <a className="text-primary" href="#">Bootstrapious.com</a></p>
+                            <h5 className="h1 text-white"> STUDY SPHERE.</h5>
+                            <p className="small text-white">One Stop solution for all the Competative Exam Topics</p>
+                            <p className="small text-white mb-0">&copy; Copyrights. All rights reserved. <Link className="text-primary">Bootstrapious.com</Link></p>
                         </div>
                         <div className="col-lg-2 col-md-6">
                             <h5 className="text-white mb-3">Quick links</h5>
                             <ul className="list-unstyled text-white">
-                                <li><Link>Home</Link></li>
-                                <li><Link>About</Link></li>
-                                <li><Link>Get started</Link></li>
-                                <li><Link>FAQ</Link></li>
+                                <li><Link className="link-light  link-offset-2 link-underline-opacity-100-hover text-nowrap" to="/home">Home</Link></li>
+                                <li><Link className="link-light  link-offset-2 link-underline-opacity-100-hover text-nowrap" to="#">About</Link></li>
+                                <li><Link className="link-light  link-offset-2 link-underline-opacity-100-hover text-nowrap" to="#">Get started</Link></li>
+                                <li><Link className="link-light  link-offset-2 link-underline-opacity-100-hover text-nowrap" to="#">FAQ</Link></li>
                             </ul>
                         </div>
                         <div className="col-lg-2 col-md-6">
                             <h5 className="text-white mb-3">Quick links</h5>
                             <ul className="list-unstyled text-white">
-                                <li><Link>Home</Link></li>
-                                <li><Link>About</Link></li>
-                                <li><Link>Get started</Link></li>
-                                <li><Link>FAQ</Link></li>
+                                <li><Link className="link-light  link-offset-2 " to="/authorDetails">Author</Link></li>
+                                <li><Link className="link-light  link-offset-2 " to="#">About</Link></li>
+                                <li><Link className="link-light  link-offset-2 " to="#">Get started</Link></li>
+                                <li><Link className="link-light  link-offset-2 " to="#">FAQ</Link></li>
                             </ul>
                         </div>
                         <div className="col-lg-4 col-md-6">

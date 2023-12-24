@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function AlsoReadComponent(props) {
   const [taglist, setTagList] = useState([]);

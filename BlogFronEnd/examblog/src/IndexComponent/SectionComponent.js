@@ -37,7 +37,18 @@ import { CreateBlog } from "../BlogAppComponent/CreateBlogComp";
 import { AdminPage } from "../ExamComponent/AdminPage";
 import { FileNotFound } from "../BlogAppComponent/FileNotFound";
 import { NotificationComponent } from "../ExamComponent/NotificationComponent";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import {  useSelector } from "react-redux/es/hooks/useSelector";
+import { NotificationTable } from "../ExamComponent/NotificationTable";
+import { HistoryCarasoul } from "../BlogAppComponent/HomeCarasoul/HistoryCarasoul";
+import { GACarasoul } from "../BlogAppComponent/HomeCarasoul/GACarasoul";
+import { CACarasoul } from "../BlogAppComponent/HomeCarasoul/CACarasoul";
+import { PolityCarasoul } from "../BlogAppComponent/HomeCarasoul/PolityCarasoul";
+import { GeographyCarasoul } from "../BlogAppComponent/HomeCarasoul/GeographyCarasoul";
+import { EcoCarasoul } from "../BlogAppComponent/HomeCarasoul/EcoCarasoul";
+import { EnglishCarasoul } from "../BlogAppComponent/HomeCarasoul/EnglishCarasoul";
+import { Notification } from "../ExamComponent/Notification";
+import { UserLogin } from "../AuthAppComponent/UserLogin/UserLogin";
+
 
 export function SectionComponent(){
     const { access_token } = useSelector(state=>state.auth)
@@ -56,13 +67,25 @@ export function SectionComponent(){
                 <Route path="/footer" element={<FooterComp/>}/>
                 <Route path="/AdminPage" element={<AdminPage/>}/>
                 <Route path="/notification" element={<NotificationComponent/>}/>
+                <Route path="/notificationTable" element={<NotificationTable/>}/>
+                <Route path="/noti" element={<Notification/>}/>
                 {/* -------------------------------------------- */}
-                <Route path="/login" element={!access_token ? <LoginComponent/>: <AdminPage/>}/>
-                <Route path="/registerAuthor" element={<RegisterComponent/>}/>
-                <Route path="/Authentication" element={ !access_token ? <AuthenticationComponent/> : <AdminPage/> }/>
-                <Route path="/authorComponent" element={<ProfileComponent/>}/>
-                <Route path="/changePassword" element={<ChangePasswordComponent/>}/>
+                <Route path="/historyCarasoul" element={<HistoryCarasoul/>}/>
+                <Route path="/GACarasoul" element={<GACarasoul/>}/>
+                <Route path="/CACarasoul" element={<CACarasoul/>}/>
+                <Route path="/polityCarasoul" element={<PolityCarasoul/>}/>
+                <Route path="/geographyCarasou" element={<GeographyCarasoul/>}/>
+                <Route path="/EcoCarasousel" element={<EcoCarasoul/>}/>
+                <Route path="/englishCarasousel" element={<EnglishCarasoul/>}/>
+                {/* -------------------------------------------- */}
+                <Route path="/login" element={!access_token ? <LoginComponent/>: <Navigate to="/Authentication"/>}/>
+                <Route path="/registerAuthor" element={!access_token ? <RegisterComponent/>:<Navigate to="/Authentication"/>}/>
+                <Route path="/Authentication" element={ !access_token ? <AuthenticationComponent/> : <Navigate to="/AdminPage"/> }/>
+                <Route path="/authorProfile" element={access_token ? <ProfileComponent/> : <Navigate to="/home"/>} />
+                <Route path="/changePassword" element={!access_token ? <ChangePasswordComponent/>:<AdminPage/>}/>
                 <Route path="/resetEmail" element={<ResetEmailComponent/>}/>
+                {/* -------------------------------------------- */}
+                <Route path="/userLogin" element={<UserLogin/>}/>
                 {/* -------------------------------------------- */}
                 <Route path="/history" element={<History/>} />
                 <Route path="/geography" element={<Geography/>}/>
@@ -73,15 +96,15 @@ export function SectionComponent(){
                 <Route path="/eng" element={<English/>}/>
                 <Route path="/topic/:id" element={<TopicComponent/>}/>
                 {/* ------------------------------------------------- */}
-                <Route path="/addSection" element={<AddExamSection/>}/>
-                <Route path="/addCommission" element={<AddCommission/>}/>
-                <Route path="/addExam" element={<AddExam/>}/>
-                <Route path="/addSubject" element={<AddSubject/>}/>
-                <Route path="/addCategory" element={<AddCategory/>}/>
-                <Route path="/addChapter" element={<AddChapter/>}/>
-                <Route path="/addNote" element={<AddNotes/>}/>
-                <Route path="/addImage" element={<AddImage/>}/>
-                <Route path="/ImageShow" element={<AddImageComp/>}/>
+                <Route path="/addSection" element={access_token ? <AddExamSection/>: <AuthenticationComponent/>}/>
+                <Route path="/addCommission" element={access_token ? <AddCommission/>: <AuthenticationComponent/>}/>
+                <Route path="/addExam" element={access_token ? <AddExam/>: <AuthenticationComponent/>}/>
+                <Route path="/addSubject" element={access_token ? <AddSubject/>: <AuthenticationComponent/>}/>
+                <Route path="/addCategory" element={access_token ? <AddCategory/>: <AuthenticationComponent/>}/>
+                <Route path="/addChapter" element={access_token ? <AddChapter/>: <AuthenticationComponent/>}/>
+                <Route path="/addNote" element={access_token ? <AddNotes/>: <AuthenticationComponent/>}/>
+                <Route path="/addImage" element={access_token ? <AddImage/>: <AuthenticationComponent/>}/>
+                <Route path="/ImageShow" element={access_token ? <AddImageComp/>: <AuthenticationComponent/>}/>
                 {/* -------------------------------------------- */}
                 <Route path="/commissionList" element={<CommissionComponent/>}/>
                 <Route path="/AlsoRead" element={<AlsoReadComponent/>}/>
