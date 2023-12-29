@@ -1,0 +1,11 @@
+#fileNotFoundContainer{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#fileNotFound{
+    width:80%;
+    margin-left: 45%;
+    margin-top: 14px;
+}

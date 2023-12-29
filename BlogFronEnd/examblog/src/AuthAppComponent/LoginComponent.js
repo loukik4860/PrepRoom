@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect,useState } from "react";
 import { useLoginUserMutation } from "./Services/UserAuthApi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getToken, storeToken } from "./Services/LocalStorage";
 import { useDispatch } from "react-redux";
 import { setUserToken } from "./feature/authSlice";
@@ -11,6 +11,7 @@ export function LoginComponent() {
   const [Msg,setMsg] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,22 +28,14 @@ export function LoginComponent() {
     if (res.data) {
         storeToken(res.data.token)
         let { access_token } = getToken()
-        console.log(access_token);
-        dispatch(setUserToken({access_token : access_token}))
         setMsg(res.data);
-        setTimeout(()=>{
-          navigate('/AdminPage');
-        },3000)
+        console.log("res.data",res.data.msg);
+        console.log(access_token);
+        navigate('/AdminPage');
+        dispatch(setUserToken({access_token : access_token}))
     }
   }
 
-  let {access_token} = getToken()
-  useEffect(()=>{
-
-      dispatch(setUserToken({access_token : access_token}))
-
-  },[dispatch])
-  
   return (
     <div>
       <div className="container container-fluid" style={{height:"100vh"}}>
@@ -72,6 +65,7 @@ export function LoginComponent() {
               Login
             </button>
             </form> 
+            <Link to="/resetEmail">Reset Password</Link>
               {
                 server_error && server_error.non_fields_errors ? (
                     <div className="alert alert-danger mt-3" role="alert">
@@ -79,13 +73,13 @@ export function LoginComponent() {
                     </div>
                 ): "" 
               },
-
               {
-                Msg && Msg.msg ?
-                <div className="alert alert-success" role="alert">
-                    {Msg.msg} redirecting it to Home Page.
-                </div>: ""
-              } 
+                Msg && Msg.msg ? (
+                  <div className="alert alert-success mt-3" role="alert">
+                    {Msg.msg}
+                  </div>
+                ) : ""
+              }
             </div>
           </div>
         </div>

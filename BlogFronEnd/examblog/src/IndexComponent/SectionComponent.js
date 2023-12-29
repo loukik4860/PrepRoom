@@ -82,7 +82,7 @@ export function SectionComponent(){
                 <Route path="/registerAuthor" element={!access_token ? <RegisterComponent/>:<Navigate to="/Authentication"/>}/>
                 <Route path="/Authentication" element={ !access_token ? <AuthenticationComponent/> : <Navigate to="/AdminPage"/> }/>
                 <Route path="/authorProfile" element={access_token ? <ProfileComponent/> : <Navigate to="/home"/>} />
-                <Route path="/changePassword" element={!access_token ? <ChangePasswordComponent/>:<AdminPage/>}/>
+                <Route path="/changePassword" element={access_token ? <ChangePasswordComponent/>:<HomeComponent/>}/>
                 <Route path="/resetEmail" element={<ResetEmailComponent/>}/>
                 {/* -------------------------------------------- */}
                 <Route path="/userLogin" element={<UserLogin/>}/>

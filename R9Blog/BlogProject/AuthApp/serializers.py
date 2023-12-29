@@ -40,7 +40,8 @@ class AuthorLoginSerializer(serializers.ModelSerializer):
 class AuthorProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuthorUser
-        fields = ['Author_email','Author_firstName','Author_lastName','is_author','is_active','is_admin','created_at','updated_at']
+        fields = ['Author_email', 'Author_firstName', 'Author_lastName', 'is_author', 'is_active', 'is_admin',
+                  'created_at', 'updated_at']
 
 
 class AuthorChangePasswordSerializer(serializers.ModelSerializer):
@@ -86,6 +87,7 @@ class AuthorPasswordEmailResetSerializer(serializers.Serializer):
         else:
             raise serializers.ValidationError("You are not Registered User ")
 
+
 class UserPasswordResetSerializer(serializers.Serializer):
     password = serializers.CharField(max_length=100, style={'input_type': 'password'}, write_only=True)
     password2 = serializers.CharField(max_length=100, style={'input_type': 'password'}, write_only=True)
@@ -101,18 +103,19 @@ class UserPasswordResetSerializer(serializers.Serializer):
             uid = self.context.get('uid')
             token = self.context.get('token')
             user = self.context.get('user')
-            if password!=password2:
+            if password != password2:
                 raise serializers.ValidationError("Password And confirm password does Not match")
             id = smart_str(urlsafe_base64_decode(uid))
             user = AuthorUser.objects.get(id=id)
-            if not PasswordResetTokenGenerator.check_token(user,token):
+            if not PasswordResetTokenGenerator.check_token(user, token):
                 return serializers.ValidationError("Token is not valid or expired")
             user.set_password(password)
             user.save()
             return attrs
         except DjangoUnicodeDecodeError as identifier:
-            PasswordResetTokenGenerator().check_token(user,token)
+            PasswordResetTokenGenerator().check_token(user, token)
             raise serializers.ValidationError("Token is not valid or Expired")
 
 
+# -------------------------------------------------------------------------------------------
 

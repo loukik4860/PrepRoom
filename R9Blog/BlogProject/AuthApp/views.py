@@ -9,6 +9,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from blogApp.permissions import IsAuthor
 
+
 def get_tokens_for_user(user):
     '''
     generate Token Manually
@@ -56,7 +57,7 @@ class AuthorLoginView(APIView):
 
 class AuthorProfileView(APIView):
     renderer_classes = [UserRenderers]
-    permission_classes = [IsAuthenticated,IsAuthor]
+    permission_classes = [IsAuthenticated, IsAuthor]
 
     def get(self, request, format=None):
         serializer = AuthorProfileSerializer(request.user)
@@ -90,8 +91,3 @@ class AuthorPasswordReset(APIView):
         if serializer.is_valid(raise_exception=True):
             return Response({'msg': 'Password Reset Successfully'}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# ------------------------------------------------------------------------------------------------------------------------#
-
-

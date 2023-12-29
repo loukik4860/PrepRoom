@@ -1,10 +1,10 @@
 import { Nav, Navbar, NavDropdown, Form, Col, Button, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../IndexComponent/staticFile/NavBar.css';
 import { getToken, removeToken } from '../AuthAppComponent/Services/LocalStorage';
 import { useDispatch } from 'react-redux';
-import { unsetUserToken } from '../AuthAppComponent/feature/authSlice';
+import { setUserToken, unsetUserToken } from '../AuthAppComponent/feature/authSlice';
 
 export function NavbarIndex() {
   const navigate = useNavigate();
@@ -17,7 +17,10 @@ export function NavbarIndex() {
     navigate('/Authentication');
   };
 
-  const { access_token } = getToken();
+  let { access_token } = getToken();
+  useEffect(()=>{
+    dispatch(setUserToken({access_token:access_token}))
+  },[dispatch,access_token])
 
   return (
     <div className="navBar">

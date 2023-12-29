@@ -42,8 +42,8 @@ export function AdminPage() {
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-6 bg-primary-subtle mx-3 ms-3 shadow rounded-2">
-              <div className="">
-                <div className="card my-3 text-center" style={{ width: "19rem" }}>
+            
+                <div className="card my-3 text-center" style={{ width: "19vm" }}>
                   <div className="card-header bg-warning-subtle">Add Data</div>
                   <ul className="list-group list-group-flush">
                     <Link to="/addSection" className="list-group-item">
@@ -75,7 +75,7 @@ export function AdminPage() {
                     </Link>
                   </ul>
                 </div>
-              </div>
+             
             </div>
             <div className="col-lg-8 col-md-6 bg-light mx-3 ms-3 shadow rounded-2">
               <div className="text-center">
@@ -87,24 +87,22 @@ export function AdminPage() {
         </div>
         <div className="container my-3">
           <div className="row">
-            <div className="col-lg-3 col-md-6 bg-primary-subtle mx-3 ms-3 shadow rounded-2">
-              <div className="">
-                <div className="card my-3 text-center" style={{ width: "19rem" }}>
-                  <div className="card-header bg-warning-subtle">Author</div>
-                  <ul className="list-group list-group-flush">
-                    <Link to="/addSection" className="list-group-item">
-                      Loukik
-                    </Link>
-                  </ul>
-                </div>
-              </div>
+          <div className="col-lg-3 col-md-6 bg-primary-subtle mx-3 ms-3 shadow rounded-2">
+            <div className="card my-3 text-center" style={{ width: "19vm" }}>
+              <div className="card-header bg-warning-subtle">Author</div>
+                <ul className="list-group list-group-flush">
+                  <Link to="#" className="list-group-item">
+                    Add Exam
+                  </Link>
+                </ul>
             </div>
-            <div className="col-lg-8 col-md-6 bg-light mx-3 ms-3 shadow rounded-2">
-              <div className="text-center">
-                <h4>Data</h4>
-                <hr />
-              </div>
+          </div>
+          <div className="col-lg-8 col-md-6 bg-light mx-3 ms-3 shadow rounded-2">
+            <div className="text-center">
+              <h4>Data</h4>
+              <hr />
             </div>
+          </div>
           </div>
         </div>
       </div>

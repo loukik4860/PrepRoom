@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import AuthorUser, RegularUser
+from .models import AuthorUser
 
 
 # Register your custom user model with the admin site
 class AuthorUserAdmin(UserAdmin):
     list_display = (
-        'id', 'Author_firstName', 'Author_lastName', 'Author_email', 'is_author', 'is_active', 'is_admin', 'created_at',
+        'id', 'Author_firstName', 'Author_lastName', 'Author_email', 'is_author', 'is_active', 'is_admin', 'is_regular_user', 'created_at',
         'updated_at')
     list_filter = ('is_admin', 'is_author', 'is_active')
     fieldsets = (
@@ -24,18 +24,5 @@ class AuthorUserAdmin(UserAdmin):
     ordering = ('Author_email',)
     filter_horizontal = ()
 
-
-class RegularUserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'first_name', 'last_name', 'is_active', 'is_admin', 'is_user', 'created_at', 'updated_at')
-    search_fields = ('email', 'first_name', 'last_name')
-    readonly_fields = ('created_at', 'updated_at')
-
-    filter_horizontal = ()
-    list_filter = ()
-    fieldsets = ()
-    ordering = ('id',)
-
-
-admin.site.register(RegularUser, RegularUserAdmin)
 
 admin.site.register(AuthorUser, AuthorUserAdmin)

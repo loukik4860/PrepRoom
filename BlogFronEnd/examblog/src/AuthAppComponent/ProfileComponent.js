@@ -3,6 +3,7 @@ import { useGetLoggedUserQuery } from "./Services/UserAuthApi"
 import profilePic from "../Images/profile.png"
 import { useEffect, useState } from "react";
 import "../AuthAppComponent/Static/ProfileComponent.css";
+import { Link } from "react-router-dom";
 export function ProfileComponent(){
     
     const {access_token } = getToken();
@@ -80,8 +81,9 @@ export function ProfileComponent(){
                         </tbody>
                         </table>
                         <div className="">
-                            <button className="btn btn-info mx-2">Edit</button>
-                            <button className="btn btn-danger">Delete</button>
+                            <button className="btn btn-info mx-1">Edit</button>
+                            <button className="btn btn-danger mx-1">Delete</button>
+                            <Link to="/changePassword" className="btn btn-warning justify-content-end">Change Password</Link>
                         </div>
                     </div>
                     
