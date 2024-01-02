@@ -40,18 +40,17 @@ export function TagDetailsComponent() {
     return doc.body.textContent || "";
   };
   return (
-    
-    <div className="container mt-5">
+    <div className="container mt-3">
       <div className="row">
         <div className="jumbotron jumbotron-fluid">
           {
             tagData.map(tags => (
             <div key={tags.id}> 
-              <h4 className="tagName ms-3">{tags.name}</h4>
+              <h4 className="tagName ms-3 bg-light py-2 rounded text-center">{tags.name}</h4>
                 <div className="container">
                   {
                     tags.tag && tags.tag.map(blog => (
-                    <div className="card shadow p-3 mb-1 mt-3 bg-body-tertiary bg-white rounded shadow" key={blog.id}>
+                    <div className="card shadow mb-1 mt-2 bg-body-tertiary bg-white rounded shadow" key={blog.id}>
                       <Link className="link-dark link-underline-light link-offset-2 link-underline-opacity-100-hover" to={'/singleblog/'+blog.id}>
                         <h5 className="blogTitle ms-3">{blog.title}</h5>
                       </Link>
@@ -103,7 +102,9 @@ export function TagDetailsComponent() {
         </div>
       </div>
       <div className="row">
+        <div id="row1">
           <TagComponent/>
+        </div>
       </div>
     </div>
   );

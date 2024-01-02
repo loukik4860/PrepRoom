@@ -13,6 +13,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .renderer import UserRenderer
 from .Paginations import MyPageNumberPagination
 
+
 class PostBlogImageView(ListCreateAPIView):
     queryset = BlogImage.objects.all()
     serializer_class = BlogImageSerializer
@@ -76,15 +77,15 @@ class PostBlogView(ListCreateAPIView):
 
 
 class PostBlogDetailsView(RetrieveUpdateDestroyAPIView):
-    queryset = BlogModel.objects.all()
     serializer_class = BlogModelSerializer
     renderer_classes = [UserRenderer]
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
 
-
-class BlogView(ListAPIView):
-    pass
+    def get_queryset(self):
+        id = self.kwargs['pk']
+        topic = BlogModel.objects.filter(id=id)
+        return topic
 
 
 class AuthorPostView(ListAPIView):

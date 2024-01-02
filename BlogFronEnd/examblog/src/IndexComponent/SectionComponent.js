@@ -48,6 +48,7 @@ import { EcoCarasoul } from "../BlogAppComponent/HomeCarasoul/EcoCarasoul";
 import { EnglishCarasoul } from "../BlogAppComponent/HomeCarasoul/EnglishCarasoul";
 import { Notification } from "../ExamComponent/Notification";
 import { UserLogin } from "../AuthAppComponent/UserLogin/UserLogin";
+import { ResetPassword } from "../AuthAppComponent/ResetPassword";
 
 
 export function SectionComponent(){
@@ -84,6 +85,7 @@ export function SectionComponent(){
                 <Route path="/authorProfile" element={access_token ? <ProfileComponent/> : <Navigate to="/home"/>} />
                 <Route path="/changePassword" element={access_token ? <ChangePasswordComponent/>:<HomeComponent/>}/>
                 <Route path="/resetEmail" element={<ResetEmailComponent/>}/>
+                <Route path="/blog/password_reset_email/:id/:token" element={<ResetPassword/>}/>
                 {/* -------------------------------------------- */}
                 <Route path="/userLogin" element={<UserLogin/>}/>
                 {/* -------------------------------------------- */}

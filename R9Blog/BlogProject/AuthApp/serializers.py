@@ -74,9 +74,9 @@ class AuthorPasswordEmailResetSerializer(serializers.Serializer):
             print("Encoded UID", uid)
             token = PasswordResetTokenGenerator().make_token(user)
             print("Password Reset Token", token)
-            link = 'http://127.0.0.1:8000/blog/password_reset_email/' + uid + '/' + token
+            link = 'http://127.0.0.1:3000/blog/password_reset_email/' + uid + '/' + token
             print("Password Reset Link:- ", link)
-            body = " Click following Link to ResetPassword " + link
+            body = "Click following Link to ResetPassword" + link
             data = {
                 'subject': 'Reset your Password',
                 'body': body,

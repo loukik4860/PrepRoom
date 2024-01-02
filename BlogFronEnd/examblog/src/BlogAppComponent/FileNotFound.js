@@ -11,5 +11,3 @@ export function FileNotFound(){
        
     )
 }
-
-// style={{ backgroundImage: `url(${pic2})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '120vh' ,minWidth:'210vh' }}

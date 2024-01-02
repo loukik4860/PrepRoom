@@ -27,14 +27,14 @@ export function AllBlogComponent() {
 
     return (
         <div className="container">
-            <div className="container container-fluid bg-light">
+            <div className="container container-fluid bg-light mt-3">
                 <span className="text-center">
                     <h5>Advertisement</h5>
                 </span>
             </div>
             <div className="container container-fluid bg-light mt-2 pt-2">
                 {blogContent && blogContent.map((blog, index) => (
-                    <div className="card shadow p-2 my-1 mx-3 rounded border-2" key={index}>
+                    <div className="card shadow p-2 my-1 mx-3 rounded" key={index}>
                         <div className="row">
                             <div className="col-md-3">
                                 <div className="card-body rounded border-1">
